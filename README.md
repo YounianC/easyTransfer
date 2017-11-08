@@ -10,3 +10,6 @@ easyTransfer for transfer text or file from pc to phone -- use QRCode
 > 这些使用起来麻烦的地方就是必须有软件配合
 
 **现在可以直接打开网站，输入信息，生成即可；再用手机扫一扫即可打开对应网页复制文本，下载文件。**
+
+
+测试地址 **http://www.younian.net.cn:90/easyTransfer/**
