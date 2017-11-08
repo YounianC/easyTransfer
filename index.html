@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="文本文件速递">
+    <meta name="description" content="文本文件速递">
+    <title>文本文件速递</title>
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
+    <link href="https://cdn.bootcss.com/bootstrap-fileinput/4.4.5/css/fileinput.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap-fileinput/4.4.5/js/fileinput.min.js"></script>
+
+    <style>
+        #msg {
+            height: 300px;
+        }
+        .container {
+            padding: 30px;
+        }
+    </style>
+
+   
+
+</head>
+
+<body>
+    <div class="container">
+        <form enctype="multipart/form-data" action="generate.php" onsubmit="return checkAndSubmit()" method="post">
+            <label>文本信息：</label>
+            <textarea name="msg" class="form-control" id="msg" rows="3"></textarea>
+            <div>
+                    <label>附件上传：</label>
+                    <input id="file" name="file[]" type="file" multiple>
+                    <div id="errorBlock" class="help-block"></div>
+                    <button class="btn btn-primary" style="display: none" id="submitButton">Submit</button>
+            </div>
+            <button type="submit" style="float: right;margin-top:20px" class="btn btn-primary">生成</button>
+        </form>
+    </div>
+
+
+    <script>
+            $('#file').fileinput({
+                showPreview: false,
+                showUpload: false,
+                language: 'zh',
+                uploadUrl: '/',
+                maxFileSize: 5 * 1024,
+                elErrorContainer: '#errorBlock',
+                maxFilePreviewSize: 10240,
+                allowedFileExtensions: ['rar', 'zip', 'doc', 'docx', 'ppt', 'pptx', 'xls','txt'],
+            });
+        
+                function checkAndSubmit() {
+                    var msg = $("#msg").val();
+                    if (msg == null || msg == "") {
+                        alert("请添加数据!");
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
+</body>
+</html>
